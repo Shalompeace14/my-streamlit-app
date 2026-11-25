@@ -140,7 +140,8 @@ elif menu == "Materials and Properties":
 
     st.write("### Material Properties")
     st.write(f"**Density:** {properties[material]['Density']}")
-    st.write(f"**Young's Modulus:** {properties[material]['Young's Modulus']}")
+    modulus = properties[material]["Young's Modulus"]
+    st.write(f"**Young's Modulus:** {modulus}")
 
 # ABOUT ME
 elif menu == "About Me":
