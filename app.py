@@ -7,9 +7,9 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap');
 html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
-.stApp { background: linear-gradient(-45deg, #e9f4ff, #dcecff, #f4faff, #d5e8ff); background-size: 350% 350%; animation: ocean-shift 18s ease infinite; color: #102a56; }
+.stApp { background: linear-gradient(-45deg, #0756c9, #2583ff, #ff9f43, #e87524); background-size: 350% 350%; animation: ocean-shift 18s ease infinite; color: #102a56; }
 [data-testid="stHeader"] { background: transparent; }
-[data-testid="stSidebar"] { background: linear-gradient(180deg, #0d63d9, #123b83); }
+[data-testid="stSidebar"] { background: linear-gradient(180deg, #0756c9, #123b83); }
 [data-testid="stSidebar"] * { color: white; }
 h1, h2, h3 { color: #102a56; }
 .hero { text-align: center; }
