@@ -18,8 +18,12 @@ h1, h2, h3 { color: #102a56; }
 .profile-title { text-align: center; color: #647a9c; font-size: 17px; }
 .blue-card { background: rgba(255,255,255,.84); border: 1px solid rgba(94,159,255,.24); border-radius: 20px; padding: 20px; box-shadow: 0 12px 35px rgba(27,91,170,.10); margin: 10px 0; }
 .profile-photo img { border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 35px rgba(31,106,210,.25); }
-.bubble, .description-bubble { width: fit-content; max-width: 88%; padding: 12px 16px; margin: 8px 0; border-radius: 18px 18px 18px 5px; background: linear-gradient(135deg,#edf5ff,#dcecff); border: 1px solid #bdd6fa; color: #173c70; box-shadow: 0 6px 16px rgba(37,131,255,.12); }
+/* Descriptions use clean rectangular panels instead of speech bubbles. */
+.description-bubble { box-sizing: border-box; width: 100%; max-width: 100%; padding: 12px 16px; margin: 8px 0; border-radius: 8px; background: linear-gradient(110deg, rgba(220,236,255,.78), rgba(237,245,255,.92)); border: 1px solid rgba(94,159,255,.28); border-left: 4px solid #2583ff; color: #173c70; box-shadow: 0 3px 10px rgba(27,91,170,.07); transition: transform .16s ease, background .16s ease, box-shadow .16s ease, color .16s ease; cursor: pointer; }
+.description-bubble:hover { background: linear-gradient(110deg, #d4e8ff, #eaf4ff); box-shadow: 0 6px 16px rgba(37,131,255,.16); transform: translateY(-2px); }
+.description-bubble:active { background: linear-gradient(110deg, #2583ff, #0756c9); border-color: #0756c9; color: white; box-shadow: 0 2px 6px rgba(7,86,201,.24); transform: scale(.98); }
 .description-bubble.full-width { width: 100%; max-width: 100%; }
+.bubble { width: fit-content; max-width: 88%; padding: 12px 16px; margin: 8px 0; border-radius: 18px 18px 18px 5px; background: linear-gradient(135deg,#edf5ff,#dcecff); border: 1px solid #bdd6fa; color: #173c70; box-shadow: 0 6px 16px rgba(37,131,255,.12); }
 .bubble-user { margin-left: auto; border-radius: 18px 18px 5px 18px; background: linear-gradient(135deg,#2583ff,#1765db); border: 0; color: white; }
 .stButton>button { border: 0; border-radius: 12px; color: white; background: linear-gradient(110deg,#2583ff,#0756c9); font-weight: 700; }
 .blue-card [data-testid="stMarkdownContainer"] p { margin-bottom: 0; }
@@ -89,7 +93,7 @@ elif page == "🎯 Hobbies & Goals":
     cols = st.columns(2)
     for index, hobby in enumerate(hobbies):
         with cols[index % 2]:
-            st.markdown(f'<div class="blue-card description-bubble">{hobby}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="description-bubble">{hobby}</div>', unsafe_allow_html=True)
     st.subheader("🚀 My Goals")
     for goal in ["Finish my college degree", "Become a successful Mechanical Engineer", "Improve my programming skills", "Gain more knowledge and experience"]:
         st.checkbox(goal, key=f"goal_{goal}")
