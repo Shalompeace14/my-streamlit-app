@@ -34,7 +34,7 @@ st.sidebar.markdown("🫧 *Choose a page and explore!*")
 
 if page == "👤 My Profile":
     st.markdown('<div class="hero"><span class="hero-badge">💙 WELCOME TO MY PROFILE</span><h1>Get to know me!</h1><p>Engineering student • Curious mind • Always learning</p></div>', unsafe_allow_html=True)
-    _, center, _ = st.columns([1, 1.2, 1])
+    _, center, _ = st.columns([2, 1, 2])
     with center:
         st.markdown('<div class="profile-photo">', unsafe_allow_html=True)
         st.image("images/shalom.jpg", width=200)
