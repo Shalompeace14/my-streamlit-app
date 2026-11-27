@@ -7,52 +7,20 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap');
 html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
-.stApp {
-    background: linear-gradient(-45deg, #e9f4ff, #dcecff, #f4faff, #d5e8ff);
-    background-size: 350% 350%;
-    animation: ocean-shift 18s ease infinite;
-    color: #102a56;
-}
+.stApp { background: linear-gradient(-45deg, #e9f4ff, #dcecff, #f4faff, #d5e8ff); background-size: 350% 350%; animation: ocean-shift 18s ease infinite; color: #102a56; }
 [data-testid="stHeader"] { background: transparent; }
 [data-testid="stSidebar"] { background: linear-gradient(180deg, #0d63d9, #123b83); }
 [data-testid="stSidebar"] * { color: white; }
-[data-testid="stSidebar"] [role="radiogroup"] label {
-    border-radius: 12px; padding: 8px 10px; transition: .25s ease;
-}
-[data-testid="stSidebar"] [role="radiogroup"] label:hover {
-    background: rgba(255,255,255,.17); transform: translateX(5px);
-}
 h1, h2, h3 { color: #102a56; }
-.hero { text-align: center; animation: rise .8s cubic-bezier(.2,.8,.2,1) both; }
-.hero-badge {
-    display:inline-block; padding:7px 14px; color:#0756c9; background:#dcecff;
-    border:1px solid #bdd6fa; border-radius:999px; font-size:13px; font-weight:700;
-}
-.profile-name {
-    text-align:center; margin:14px 0 2px; color:#102a56;
-    font-size:clamp(26px,5vw,36px); font-weight:800;
-}
-.profile-title { text-align:center; color:#647a9c; font-size:17px; }
-.blue-card {
-    background:rgba(255,255,255,.84); border:1px solid rgba(94,159,255,.24);
-    border-radius:20px; padding:20px; box-shadow:0 12px 35px rgba(27,91,170,.10);
-    transition:transform .25s ease, box-shadow .25s ease; margin:10px 0;
-    animation: rise .65s ease both;
-}
-.blue-card:hover { transform:translateY(-5px); box-shadow:0 19px 42px rgba(27,91,170,.18); }
-.profile-photo img { border-radius:50%; border:5px solid white; box-shadow:0 10px 35px rgba(31,106,210,.25); }
-.bubble {
-    width:fit-content; max-width:88%; padding:12px 16px; margin:8px 0;
-    border-radius:18px 18px 18px 5px; background:#edf5ff; border:1px solid #d5e8ff;
-    color:#173c70; box-shadow:0 5px 15px rgba(22,91,170,.07);
-}
-.bubble-user { margin-left:auto; border-radius:18px 18px 5px 18px; background:linear-gradient(135deg,#2583ff,#1765db); border:0; color:white; }
-.stButton>button {
-    border:0; border-radius:12px; color:white; background:linear-gradient(110deg,#2583ff,#0756c9);
-    font-weight:700; box-shadow:0 6px 16px rgba(37,131,255,.22); transition:.22s ease;
-}
-.stButton>button:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 11px 24px rgba(37,131,255,.34); color:white; }
-@keyframes rise { from {opacity:0; transform:translateY(18px)} to {opacity:1; transform:translateY(0)} }
+.hero { text-align: center; }
+.hero-badge { display: inline-block; padding: 7px 14px; color: #0756c9; background: #dcecff; border: 1px solid #bdd6fa; border-radius: 999px; font-size: 13px; font-weight: 700; }
+.profile-name { text-align: center; margin: 14px 0 2px; color: #102a56; font-size: clamp(26px, 5vw, 36px); font-weight: 800; }
+.profile-title { text-align: center; color: #647a9c; font-size: 17px; }
+.blue-card { background: rgba(255,255,255,.84); border: 1px solid rgba(94,159,255,.24); border-radius: 20px; padding: 20px; box-shadow: 0 12px 35px rgba(27,91,170,.10); margin: 10px 0; }
+.profile-photo img { border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 35px rgba(31,106,210,.25); }
+.bubble { width: fit-content; max-width: 88%; padding: 12px 16px; margin: 8px 0; border-radius: 18px 18px 18px 5px; background: #edf5ff; border: 1px solid #d5e8ff; color: #173c70; }
+.bubble-user { margin-left: auto; border-radius: 18px 18px 5px 18px; background: linear-gradient(135deg,#2583ff,#1765db); border: 0; color: white; }
+.stButton>button { border: 0; border-radius: 12px; color: white; background: linear-gradient(110deg,#2583ff,#0756c9); font-weight: 700; }
 @keyframes ocean-shift { 0% {background-position:0% 50%} 50% {background-position:100% 50%} 100% {background-position:0% 50%} }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
 </style>
@@ -64,25 +32,15 @@ page = st.sidebar.radio("Explore", ["👤 My Profile", "✨ About Me", "🎯 Hob
 st.sidebar.markdown("---")
 st.sidebar.markdown("🫧 *Choose a page and explore!*")
 
-# Celebrate each visit to the profile page with a visible animation.
-previous_page = st.session_state.get("previous_page")
-if page == "👤 My Profile" and previous_page != page:
-    st.balloons()
-    st.toast("Welcome to my profile! 💙", icon="👋")
-st.session_state.previous_page = page
-
 if page == "👤 My Profile":
     st.markdown('<div class="hero"><span class="hero-badge">💙 WELCOME TO MY PROFILE</span><h1>Get to know me!</h1><p>Engineering student • Curious mind • Always learning</p></div>', unsafe_allow_html=True)
-    left, center, right = st.columns([1, 1.2, 1])
+    _, center, _ = st.columns([1, 1.2, 1])
     with center:
         st.markdown('<div class="profile-photo">', unsafe_allow_html=True)
-        st.image("images/profile.jpg", width=200)
+        st.image("images/shalom.jpg", width=200)
         st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('<div class="profile-name">Marv Thomas Shalom B. Cuarenta</div>', unsafe_allow_html=True)
     st.markdown('<div class="profile-title">⚙️ Mechanical Engineering Student</div>', unsafe_allow_html=True)
-    if st.button("✨ Say hello to Marv", use_container_width=True):
-        st.balloons()
-        st.toast("Thanks for visiting! Explore the cards below 💙", icon="🎉")
 
     st.markdown('<div class="blue-card">', unsafe_allow_html=True)
     st.subheader("🪪 A little about me")
@@ -106,12 +64,7 @@ if page == "👤 My Profile":
     st.subheader("🎵 Currently on repeat")
     st.write("**“I Just Got Mad” — Malcolm Todd**")
     st.caption("Play the track below. Spotify may ask you to sign in or open the Spotify app.")
-    components.html(
-        '<iframe style="border-radius:14px" src="https://open.spotify.com/embed/track/5cEbOJ1W1cgWJ3LGeRBsn7?utm_source=generator" '
-        'width="100%" height="152" frameborder="0" allowfullscreen="" '
-        'allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
-        height=160,
-    )
+    components.html('<iframe style="border-radius:14px" src="https://open.spotify.com/embed/track/5cEbOJ1W1cgWJ3LGeRBsn7?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>', height=160)
     st.markdown("[Open on Spotify](https://open.spotify.com/track/5cEbOJ1W1cgWJ3LGeRBsn7) · [Open on Apple Music](https://music.apple.com/us/album/i-just-got-mad-single/1747650424)")
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -144,14 +97,14 @@ elif page == "💬 Bubble Chat":
     st.title("💬 Bubble Chat")
     st.caption("Say hello! This chat uses a few friendly, built-in replies.")
     if "chat_messages" not in st.session_state:
-        st.session_state.chat_messages = [{"role":"assistant", "content":"Hi there! 👋 Welcome to my profile. Ask me about my studies, hobbies, or goals!"}]
+        st.session_state.chat_messages = [{"role": "assistant", "content": "Hi there! 👋 Welcome to my profile. Ask me about my studies, hobbies, or goals!"}]
     for message in st.session_state.chat_messages:
         bubble_class = "bubble-user" if message["role"] == "user" else ""
         icon = "🧑‍💻" if message["role"] == "user" else "💙"
         st.markdown(f'<div class="bubble {bubble_class}">{icon} {message["content"]}</div>', unsafe_allow_html=True)
     prompt = st.chat_input("Type a message...")
     if prompt:
-        st.session_state.chat_messages.append({"role":"user", "content":prompt})
+        st.session_state.chat_messages.append({"role": "user", "content": prompt})
         question = prompt.lower()
         if any(word in question for word in ["study", "course", "school", "engineering"]):
             reply = "I'm a second-year Mechanical Engineering student. ⚙️"
@@ -163,7 +116,7 @@ elif page == "💬 Bubble Chat":
             reply = "Hey! 😊 Thanks for stopping by. What would you like to know?"
         else:
             reply = "Thanks for your message! Try asking about my studies, hobbies, or goals. 💙"
-        st.session_state.chat_messages.append({"role":"assistant", "content":reply})
+        st.session_state.chat_messages.append({"role": "assistant", "content": reply})
         st.rerun()
     if st.button("🧹 Clear chat"):
         st.session_state.chat_messages = []
